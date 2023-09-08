@@ -20,8 +20,8 @@ class Pipe:
         return self.x + self.width < 0
 
     def draw(self, screen):
-        screen.blit(self.pipe_top_image, (self.x, -200))
-        screen.blit(self.pipe_bottom_image, (self.x, 300))
+        screen.blit(self.pipe_top_image, (self.x, self.gap_start - self.height))
+        screen.blit(self.pipe_bottom_image, (self.x, self.gap_start + self.gap_size))
 
     def get_top_rect(self):
         return pygame.Rect(self.x, 0, self.width, self.gap_start)
