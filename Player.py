@@ -20,15 +20,19 @@ class Player:
         self.gravity = 1.5
         self.jump_power = -10
 
+    def get_rect(self):
+        return pygame.Rect(self.pos.x, self.pos.y, self.current_image.get_width(), self.current_image.get_height())
+
     def update(self, dt, screen_height):
         """Aktualizacja pozycji gracza"""
         self.velocity += self.gravity * dt
         self.pos.y += self.velocity * dt
-        print(self.velocity)
+
 
         if self.pos.y < 0:
             self.pos.y = 0
             self.velocity = 0
+
         elif self.pos.y > screen_height:
             self.pos.y = screen_height
 
@@ -42,14 +46,8 @@ class Player:
     def jump(self):
         self.velocity += self.jump_power
 
-        self.current_image = self.jumping_image
-        print("jumping ")
+
 
     def draw(self, screen):
         screen.blit(self.current_image,
                     (self.pos.x - self.current_image.get_width() / 2, self.pos.y - self.current_image.get_height() / 2))
-        # screen.blit(self.falling_image)
-        # Rysujemy obie grafiki w różnych miejscach, aby sprawdzić, czy są prawidłowo wczytywane
-        # screen.blit(player.flying_image, (100, 100))
-        # screen.blit(player.falling_image, (200, 100))
-        # screen.blit(player.jumping_image, (300, 100))
