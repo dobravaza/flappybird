@@ -35,7 +35,7 @@ while running:
     time_passed = clock.tick(60)
     dt = time_passed / 50.0
     player.draw(screen)
-    player.update(dt)
+    player.update(dt, screen.get_height())
 
     screen.blit(watermark_text, (10, screen.get_height() - watermark_text.get_height() - 10))
     pygame.display.flip()
